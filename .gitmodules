@@ -1,0 +1,3 @@
+[submodule "OrangePi-OLED"]
+	path = OrangePi-OLED
+	url = https://github.com/karabek/OrangePi-OLED
