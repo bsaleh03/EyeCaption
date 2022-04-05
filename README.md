@@ -25,9 +25,10 @@ wget https://alphacephei.com/kaldi/models/vosk-model-small-en-us-0.15.zip
 unzip vosk-model-small-en-us-0.15.zip
 mv vosk-model-small-en-us-0.15 model
 ```
-- cd into *OrangePi-OLED*
-- edit line 74 of *oled/render.py* to invert the image displayed on the oled screen from ```self.device.display(self.image)``` to ```self.device.display(self.image.transpose(Image.FLIP_LEFT_RIGHT))```. This step is needed because reflecting on the display inverts the image and inverting it here cancels that out
-- Run ```sudo python3 setup.py install``` to install the OLED package
+- ### Only run these steps if you are on orange pi
+  - Checkout branch *OrangePi*
+  - cd into *OrangePi-OLED*
+  - Run ```sudo python3 setup.py install``` to install the OLED package
 - Run ```python3 subtitler.py -l``` to see where the USB microphone is listed
 - cd back into the repo and move *subtitler.service* into ```/etc/systemd/system/```. Make sure to edit the service file to ensure the paths are correct and the correct microphone device is specified after -d. This will ensure the subtitler script will run at startup every time. Once the service is moved, run ```sudo systemctl enable subtitler```
 
