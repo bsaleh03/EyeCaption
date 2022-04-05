@@ -4,7 +4,7 @@
 ## Introduction
 The Subtitler is a wearable offline heads up display designed to clip on to glasses frames. It listens and displays what it hears on the HUD. For questions or to order a premade kit, reach out to me at bsaleh03@gmail.com
 ## Requirements
-- A single board computer with an armv7 or above chip: This project is designed around the OrangePi Zero Two as it was the most readily available SBC but any raspberry pi (not zero) and other SBCs will work just fine instead.
+- A single board computer with an armv7 or above chip: This project is designed around the OrangePi Zero Two as it was the most readily available SBC but any raspberry pi (not zero) and other SBCs will work just fine instead. NOTE: This software will not work without GLIBC 2.27, ensure it is available on the linux distro you choose for your SBC
 - An I2C Oled display: driving the HUD is a 0.96 inch, 128x64 px oled display
 - Access to a 3d printer: To print the HUD mound. If one cannot be accessed, prints can be ordered from [Shapeways](https:shapeways.com) or with the whole kit from me. Alternatively a long piece of plastic is needed where the plastic and i2c display can be attached
 - A USB microphone: An adapter may be needed depending on the SBCs USB interface. This is not required on SBCs with onboard microphones
