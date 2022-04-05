@@ -14,7 +14,7 @@ The Subtitler is a wearable offline heads up display designed to clip on to glas
 # Setup Instructions
 ## Software
 - On windows, use [Win32DiskImager](https://win32diskimager.org/) to install images on to your SD card. If you're using a raspberry pi, use their [install tool](https://www.raspberrypi.com/software/).
-### If you are using an Orange Pi Zero 2, all you need to do is flash *subtitler_0.1.0_ubuntu_focus_OPI_Z2.img*, provided in the repo, to your sd card and you'll be good to go
+### If you are using an Orange Pi Zero 2, all you need to do is flash *subtitler_0.1.0_ubuntu_focus_OPI_Z2.img* under project releases, to your sd card and you'll be good to go
 - Otherwise, flash the appropriate image for your SBC onto your SD card
 - Boot up the SBC and login to your device (usually through serial TTL or SSH). You will need to connect this device to the internet the first time to install the required packages. Run ```sudo apt-get update``` 
 - Clone this repo on to the device
