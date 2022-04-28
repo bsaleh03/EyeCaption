@@ -1,8 +1,0 @@
-[Unit]
-Description=Subtitler startup script
-
-[Service]
-ExecStart=/usr/bin/python3 ~/root/subtitler/subtitler.py -d 5
-
-[Install]
-WantedBy=multi-user.target
