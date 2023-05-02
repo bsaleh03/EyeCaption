@@ -1,20 +1,21 @@
-# Subtitler
+# CaptionIt
 ### v0.1.0
 ### Live subtitles for any situation
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/DIHrooFKeLU/0.jpg)](https://www.youtube.com/watch?v=DIHrooFKeLU)
 ## Introduction
-The Subtitler is a wearable offline heads up display designed to clip on to glasses frames. It listens and displays what it hears on the HUD. For questions or to order a premade kit, reach out to me at bsaleh03@gmail.com
+CaptionIt is a wearable offline heads up display designed to clip on to glasses' frames. It listens and displays what it hears on the HUD. For questions or to order a premade kit, reach out to me at bsaleh03+captionit@gmail.com
 ## Requirements
-- A single board computer with an armv7 or above chip: This project is designed around the OrangePi Zero Two as it was the most readily available SBC but any raspberry pi (not zero) and other SBCs will work just fine instead.
+- A single board computer with an armv7 or above chip: This project is designed around the OrangePi Zero Two as it was the most readily available SBC but any raspberry pi (not zero) and other SBCs will work just fine instead. NOTE: This software will not work without GLIBC 2.27, ensure it is available on the linux distro you choose for your SBC or in your Docker environment
 - An I2C Oled display: driving the HUD is a 0.96 inch, 128x64 px oled display
 - Access to a 3d printer: To print the HUD mound. If one cannot be accessed, prints can be ordered from [Shapeways](https:shapeways.com) or with the whole kit from me. Alternatively a long piece of plastic is needed where the plastic and i2c display can be attached
 - A USB microphone: An adapter may be needed depending on the SBCs USB interface. This is not required on SBCs with onboard microphones
 - An SD card and a USB to SD adapter: For programming the SBC
 - A USB powerbank: To power the SBC
-- Two butterfly clips: To attach the HUD to glasses frames
+- Two binder clips: To attach the HUD to glasses' frames
 # Setup Instructions
 ## Software
-- On windows, use [Win32DiskImager](https://win32diskimager.org/) to install images on to your SD card. If you're using a raspberry pi, use their [install tool](https://www.raspberrypi.com/software/).
-### If you are using an Orange Pi Zero 2, all you need to do is flash *subtitler_0.1.0_ubuntu_focus_OPI_Z2.img* under project releases, to your sd card and you'll be good to go
+- On Windows, use [Win32DiskImager](https://win32diskimager.org/) to install images on to your SD card. If you're using a raspberry pi, use their [install tool](https://www.raspberrypi.com/software/).
+### If you are using an Orange Pi Zero 2, all you need to do is flash *captionit_0.1.0_ubuntu_focus_OPI_Z2.img* under project releases, to your sd card and you'll be good to go
 - Otherwise, flash the appropriate image for your SBC onto your SD card
 - Boot up the SBC and login to your device (usually through serial TTL or SSH). You will need to connect this device to the internet the first time to install the required packages. Run ```sudo apt-get update``` 
 - Clone this repo on to the device
@@ -25,11 +26,12 @@ wget https://alphacephei.com/kaldi/models/vosk-model-small-en-us-0.15.zip
 unzip vosk-model-small-en-us-0.15.zip
 mv vosk-model-small-en-us-0.15 model
 ```
-- cd into *OrangePi-OLED*
-- edit line 74 of *oled/render.py* to invert the image displayed on the oled screen from ```self.device.display(self.image)``` to ```self.device.display(self.image.transpose(Image.FLIP_LEFT_RIGHT))```. This step is needed because reflecting on the display inverts the image and inverting it here cancels that out
-- Run ```sudo python3 setup.py install``` to install the OLED package
-- Run ```python3 subtitler.py -l``` to see where the USB microphone is listed
-- cd back into the repo and move *subtitler.service* into ```/etc/systemd/system/```. Make sure to edit the service file to ensure the paths are correct and the correct microphone device is specified after -d. This will ensure the subtitler script will run at startup every time. Once the service is moved, run ```sudo systemctl enable subtitler```
+- ### Only run these steps if you are on orange pi
+  - Checkout branch *OrangePi*
+  - cd into *OrangePi-OLED*
+  - Run ```sudo python3 setup.py install``` to install the OLED package
+- Run ```python3 captionit.py -l``` to see where the USB microphone is listed
+- cd back into the repo and move *captionit.service* into ```/etc/systemd/system/```. Make sure to edit the service file to ensure the paths are correct and the correct microphone device is specified after -d. This will ensure the captionit script will run at startup every time. Once the service is moved, run ```sudo systemctl enable captionit```
 
 Setup should be complete from SW side
 
@@ -42,7 +44,7 @@ Setup should be complete from SW side
 Setup should be complete from HW side
 
 # Usage
-Once setup is complete the Subtitler is easy to use, plug the microphone and power source into the SBC and attach the mount to your glasses frames with the butterfly clips. Subtitles should automatically pop up in the HUD reflection as they are heard. Absolutely no internet connection is needed after initial setup, this setup is portable anywhere.
+Once setup is complete, CaptionIt is easy to use, plug the microphone and power source into the SBC and attach the mount to your glasses' frames with the butterfly clips. Subtitles should automatically pop up in the HUD reflection as they are heard. Absolutely no internet connection is needed after initial setup, this setup is portable anywhere.
 
 # Refrences
 - https://alphacephei.com/vosk/
